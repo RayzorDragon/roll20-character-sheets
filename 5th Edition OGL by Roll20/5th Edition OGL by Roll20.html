@@ -45,6 +45,12 @@
             <input type="text" name="attr_npc_hpformula" placeholder="11d8 + 33">
         </div>
         <div class="row">
+            <span data-il8n="armor-plating-u">ARMOR PLATING</span>
+            <input class="num" type="text" name="attr_atum_armor_plating_max" placeholder="30">
+            <span data-il8n="armor-plating-threshold-u">THRESHOLD</span>
+            <input class="num" type="text" name="attr_atum_armor_plating_threshold" placeholder="10">
+        </div>
+        <div class="row">
             <span data-i18n="speed-u">SPEED</span>
             <input type="text" name="attr_npc_speed" placeholder="30 ft., fly 60ft." data-i18n-placeholder="npc-speed-place">
         </div>
@@ -334,6 +340,11 @@
             <button type="roll" name="roll_npc_hpformula" value="@{wtype}&{template:npc} {{type=Hit Points}} {{normal=1}} @{npc_name_flag} {{rname=^{hp}}} {{mod=@{npc_hpformula}}} {{r1=[[@{npc_hpformula}]]}} charname=@{character_name}">
                 <span class="parens" name="attr_npc_hpformula" style="font-size: 12px; font-weight: normal;"></span>
             </button>
+        </div>
+        <div class="row red">
+            <span data-il8n="armor_plating" class="bold">Armor Plating</span>
+            <span class="num3" name="attr_atum_armor_plating_max"></span>
+            <span class="parens" name="attr_atum_armor_plating_threshold" style="font-size: 12px; font-weight: normal;"></span>
         </div>
         <div class="row red">
             <span data-i18n="speed" class="bold">Speed</span>
@@ -789,6 +800,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -948,8 +960,99 @@
 <input class="tab-button core" type="radio" name="attr_tab" value="core" checked="checked"><span data-i18n="core-u">CORE</span>
 <input class="tab-button bio" type="radio" name="attr_tab" value="bio"><span data-i18n="bio-u">BIO</span>
 <input class="tab-button spells" type="radio" name="attr_tab" value="spells"><span data-i18n="spells-u">SPELLS</span>
+<input class="tab-button atum" type="radio" name="attr_tab" value="atum"><span data-il8n="atum-u">ATUM</span>
 <input class="tab-button options" type="radio" name="attr_tab" value="options"><span style="font-family: pictos">y</span>
 
+<div class="page atum">
+    <div class="header">
+        <div class="name-container">
+            <img src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/5th%20Edition%20OGL%20by%20Roll20/images/srd5_360.png" style="padding-bottom: 5px;" alt="SRD5 by Roll20">
+            <input type="text" name="attr_atum_name" style="width: 100%;">
+            <span class="label" data-i18n="atum-name-u">ATUM NAME</span>
+        </div>
+        <input class="options-flag" type="checkbox" name="attr_options-class-selection" checked="checked"><span>y</span>
+        <div class="header-info sheet-options">
+            <div class="sheet-row" style="border-top: 2px dashed gold;">
+                <span data-i18n="chassis type:-u">CHASSIS TYPE:</span>
+                <select class="atum-chassis" name="attr_atum_chassis">
+                    <option value="" data-i18n="choose">Choose</option>
+                    <option value="Light" data-i18n="light">Light</option>
+                    <option value="Medium" data-i18n="medium">Medium</option>
+                    <option value="Heavy" data-i18n="heavy">Heavy</option>
+                </select>
+                <span data-i18n="mobility type:-u">MOBILITY TYPE:</span>
+                <select class="atum-mobility" name="attr_atum_mobility">
+                    <option value="" data-i18n="choose">Choose</option>
+                    <option value="Wheeled" data-i18n="wheeled">Wheeled</option>
+                    <option value="Bipedal" data-i18n="bipedal">Bipedal</option>
+                    <option value="Quadrupedal" data-i18n="quadrupedal">Quadrupedal</option>
+                    <option value="Tracked" data-i18n="tracked">Tracked</option>
+                </select>
+                <span data-i18n="pilot:-u">PILOT:</span>
+                <input class="atum-pilot" style="width: 100px" type="text" name="attr_atum_pilot">
+            </div>
+            <div class="sheet-row">
+                <span data-i18n="class type:-u">CLASS TYPE:</span>
+                <select class="atum-class" name="attr_atum_class">
+                    <option value="" data-i18n="choose">Choose</option>
+                    <option value="Civilian" data-i18n="civilian">Civilian</option>
+                    <option value="Industrial" data-i18n="industrial">Industrial</option>
+                    <option value="Military" data-i18n="military">Military</option>
+                </select>
+                <span data-i18n="engine type:-u">ENGINE TYPE:</span>
+                <select class="atum-engine" name="attr_atum_engine">
+                    <option value="" data-i18n="choose">Choose</option>
+                    <option value="Poor" data-i18n="poor">Poor</option>
+                    <option value="Average" data-i18n="average">Average</option>
+                    <option value="Good" data-i18n="good">Good</option>
+                    <option value="Masterwork" data-i18n="masterwork">Masterwork</option>
+                </select>
+                <span data-i18n="fuel tank:-u">FUEL TANK:</span>
+                <select class="atum-fuel-tank" name="attr_atum_fuel_tank">
+                    <option value="" data-i18n="choose">Choose</option>
+                    <option value="Small" data-i18n="small">Small</option>
+                    <option value="Medium" data-i18n="medium">Medium</option>
+                    <option value="Large" data-i18n="large">Large</option>
+                </select>
+                <span data-i18n="module adapter:-u">MODULE ADAPTER:</span>
+                <select class="atum-module" name="attr_atum_module">
+                    <option value="" data-i18n="none">None</option>
+                    <option value="Civilian" data-i18n="civilian">Civilian</option>
+                    <option value="Industrial" data-i18n="industrial">Industrial</option>
+                    <option value="Military" data-i18n="military">Military</option>
+                </select>
+            </div>
+        </div>
+        <div class="header-info sheet-display">
+            <div class="top">
+                <div class="hlabel-container">
+                    <input type="text" name="attr_atum_cc_display" class="sheet-atum-class-display sheet-no_events">
+                    <span class="label" data-i18n="chassis-class-u">CHASSIS & CLASS</span>
+                </div>
+                <div class="hlabel-container">
+                    <input type="text" name="attr_atum_pilot" style="width: 182px;">
+                    <span class="label" data-i18n="pilot-u">PILOT</span>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="hlabel-container">
+                    <input type="text" name="attr_atum_mobility">
+                    <span class="label" data-i18n="mobility-u">MOBILITY</span>
+                </div>
+                <div class="hlabel-container">
+                    <input type="text" name="attr_atum_module">
+                    <span class="label" data-i18n="module-u">MODULE</span>
+                </div>
+                <div class="hlabel-container">
+                    <input type="text" name="attr_atum_ef_display" class="sheet-atum-engine-fuel-display sheet-no_events">
+                    <span class="label" data-i18n="engine-fuel-u">ENGINE & FUEL TANK</span>
+                </div>
+            </div>
+        </div>
+		
+    </div>
+
+</div>
 <div class="page core">
     <div class="header">
         <div class="name-container">
@@ -2020,6 +2123,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -2237,6 +2341,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -2443,6 +2548,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -2652,6 +2758,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -2858,6 +2965,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -3064,6 +3172,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -3273,6 +3382,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -3479,6 +3589,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -3685,6 +3796,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-i18n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -3891,6 +4003,7 @@
                                 <span data-i18n="school:-u">SCHOOL:</span>
                                 <select name="attr_spellschool">
                                     <option value="abjuration" data-i18n="abjuration">Abjuration</option>
+                                    <option value="automation" data-il8n="automation">Automation</option>
                                     <option value="conjuration" data-i18n="conjuration">Conjuration</option>
                                     <option value="divination" data-i18n="divination">Divination</option>
                                     <option value="enchantment" data-i18n="enchantment">Enchantment</option>
@@ -6356,6 +6469,14 @@
 
     on("change:race change:subrace", function(eventinfo) {
         update_race_display();
+    });
+	
+    on("change:atum_chassis change:atum_class", function(eventifno) {
+        update_atum_cc_display();
+    });
+	
+    on("change:atum_engine change:atum_fuel_tank", function(eventifno) {
+        update_atum_ef_display();
     });
 
     on("change:drop_category", function(eventinfo) {
@@ -9778,6 +9899,23 @@
         });
     };
 
+    var update_atum_cc_display = function() {
+      	getAttrs(["atum_chassis", "atum_class"], function(v) {
+          	var final_atum_type = "";
+          	final_atum_type = v.atum_chassis && v.atum_class ? v.atum_chassis + " " + v.atum_class : "";
+			setAttrs({atum_cc_display: final_atum_type});
+      	});
+    };
+
+    var update_atum_ef_display = function() {
+        getAttrs(["atum_engine", "atum_fuel_tank"], function(v) {
+           	var final_atum_engine = "";
+           	final_atum_engine =  v.atum_engine && v.atum_fuel_tank ? v.atum_fuel_tank + " " + v.atum_engine : "";
+			setAttrs({atum_ef_display: final_atum_engine});
+        });
+    };
+
+	
     var organize_section_proficiencies = function() {
         getSectionIDs("proficiencies", function(ids) {
             var attribs = ["_reporder_repeating_proficiencies"];

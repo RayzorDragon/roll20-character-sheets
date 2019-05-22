@@ -79,19 +79,19 @@ input[type=radio].sheet-tab-button:checked + span {
 
 .sheet-advantagetoggle input.sheet-toggle-left,
 .sheet-advantagetoggle input.sheet-toggle-left + span {
-    right: 181px;
+    right: 241px;
     width: 90px;
 }
 
 .sheet-advantagetoggle input.sheet-toggle-center,
 .sheet-advantagetoggle input.sheet-toggle-center + span {
-    right: 113px;
+    right: 173px;
     width: 65px;
 }
 
 .sheet-advantagetoggle input.sheet-toggle-right,
 .sheet-advantagetoggle input.sheet-toggle-right + span {
-    right: 0px;
+    right: 60px;
     width: 110px;
 }
 
@@ -106,7 +106,7 @@ input[type=radio].sheet-tab-button:checked + span {
 
 .sheet-advantagetoggle.sheet-whispertoggle input.sheet-toggle-left,
 .sheet-advantagetoggle.sheet-whispertoggle input.sheet-toggle-left + span {
-    right: 54px;
+    right: 114px;
     width: 55px;
 }
 
@@ -149,6 +149,7 @@ input[type=radio].sheet-tab-button:checked + span {
 
 .sheet-npc_toggle[value="1"] + .sheet-npcspellcastingflag[value="1"] ~ .sheet-pc .sheet-page.sheet-core,
 .sheet-npc_toggle[value="1"] + .sheet-npcspellcastingflag[value="1"] ~ .sheet-pc .sheet-page.sheet-bio,
+.sheet-npc_toggle[value="1"] + .sheet-npcspellcastingflag[value="1"] ~ .sheet-pc .sheet-page.sheet-atum,
 .sheet-npc_toggle[value="1"] + .sheet-npcspellcastingflag[value="1"] ~ .sheet-pc .sheet-page.sheet-options
 {
     display: none;
@@ -197,25 +198,32 @@ input[type=radio].sheet-tab-button:checked + span {
 input[type=radio].sheet-tab-button.sheet-core:checked ~ .sheet-page.sheet-core,
 input[type=radio].sheet-tab-button.sheet-bio:checked ~ .sheet-page.sheet-bio,
 input[type=radio].sheet-tab-button.sheet-spells:checked ~ .sheet-page.sheet-spells,
-input[type=radio].sheet-tab-button.sheet-options:checked ~ .sheet-page.sheet-options 
+input[type=radio].sheet-tab-button.sheet-atum:checked ~ .sheet-page.sheet-atum,
+input[type=radio].sheet-tab-button.sheet-options:checked ~ .sheet-page.sheet-options
 {
     display: block;
 }
 
 input[type=radio].sheet-tab-button.sheet-core,
 input[type=radio].sheet-tab-button.sheet-core + span {
-    right: 116px;
+    right: 179px;
     width: 45px;
 }
 
 input[type=radio].sheet-tab-button.sheet-bio,
 input[type=radio].sheet-tab-button.sheet-bio + span {
-    right: 83px;
+    right: 146px;
     width: 30px;
 }
 
 input[type=radio].sheet-tab-button.sheet-spells,
 input[type=radio].sheet-tab-button.sheet-spells + span {
+    right: 83px;
+    width: 60px;
+}
+
+input[type=radio].sheet-tab-button.sheet-atum,
+input[type=radio].sheet-tab-button.sheet-atum + span {
     right: 20px;
     width: 60px;
 }
@@ -3234,9 +3242,33 @@ span.sheet-spellconcentration
     width: 100px;
 }
 
+.sheet-hlabel-container [name="attr_atum_cc_display"] {
+	width: 150px;
+}
+.sheet-hlabel-container [name="attr_atum_pilot"] {
+	width: 250px;
+}
+.sheet-hlabel-container [name="attr_atum_mobility"] {
+	width: 120px;
+}
+.sheet-hlabel-container [name="attr_atum_module"] {
+	width: 120px;
+}
+.sheet-hlabel-container [name="attr_atum_ef_display"] {
+	width: 160px;
+}
+
 .sheet-class {
     width: 64px;
 }
+
+.sheet-atum-chassis, .sheet-atum-class, .sheet-atum-fuel-tank, .sheet-atum-module, {
+    width: 64px;
+}
+.sheet-atum-mobility, .sheet-atum-engine {
+    width: 80px;
+}
+
 
 .charsheet .sheet-hlabel-container .sheet-multiclass-display {
     width: 57px;
@@ -3445,6 +3477,15 @@ span.sheet-spellconcentration
     text-overflow: ellipsis;
 }
 
+.sheet-atum-class-display .sheet-atum-engine-fuel-display {
+	width: 98px;
+	text-transform: capitalize;
+	overflow: hidden;
+	word-wrap: break-word;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 .sheet-no_events {
     pointer-events: none;
 }
@@ -3642,18 +3683,24 @@ span.sheet-spellconcentration
 
 .lang-es input[type=radio].sheet-tab-button.sheet-core,
 .lang-es input[type=radio].sheet-tab-button.sheet-core + span {
-    right: 137px;
+    right: 217px;
     width: 76px;
 }
 
 .lang-es input[type=radio].sheet-tab-button.sheet-bio,
 .lang-es input[type=radio].sheet-tab-button.sheet-bio + span {
-    right: 103px;
+    right: 184px;
     width: 30px;
 }
 
 .lang-es input[type=radio].sheet-tab-button.sheet-spells,
 .lang-es input[type=radio].sheet-tab-button.sheet-spells + span {
+    right: 103px;
+    width: 78px;
+}
+
+.lang-es input[type=radio].sheet-tab-button.sheet-atum,
+.lang-es input[type=radio].sheet-tab-button.sheet-atum + span {
     right: 21px;
     width: 78px;
 }
